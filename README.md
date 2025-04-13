@@ -24,3 +24,78 @@ It supports Persian characters, converts Arabic to Persian, optionally converts 
 
 ```bash
 composer require denason/persian-slug
+```
+
+> Minimum Laravel version: **9.x**
+
+---
+
+## 🚀 Usage
+
+### ✅ Using Helper Function
+
+```php
+slug_fa('سلام دنیا'); // salam-donya
+```
+
+### With optional parameters:
+
+```php
+slug_fa('سلام ۱۲۳', separator: '_', convertNumber: true); // salam_123
+```
+
+#### Parameters:
+
+| Name             | Type     | Default | Description                                       |
+|------------------|----------|---------|---------------------------------------------------|
+| `$text`          | string   | —       | The input string to convert                      |
+| `$separator`     | string   | `-`     | Character to separate words in the slug          |
+| `$convertNumber` | bool     | `true`  | Whether to convert Persian/Arabic numbers to English |
+| `$useLaravelSlug`| bool     | `false` | Use Laravel's slug engine (if available)         |
+
+---
+
+### ✅ Using the Class
+
+```php
+use Denason\PersianSlug\SlugGenerator;
+
+SlugGenerator::make('یادگیری لاراول'); // yadgiri-laravel
+```
+
+---
+
+## 🔧 Configuration
+
+No configuration required!  
+You can directly use the helper or class anywhere in your Laravel app.
+
+---
+
+## ✅ Tests
+
+```bash
+php artisan test
+```
+
+All features of the package are covered with unit tests.
+
+---
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+Developed by [محمد اسدی](https://github.com/denason)  
+For more tools and updates, visit: [denason.ir](https://denason.ir)
+
+---
+
+## 💡 Tip
+
+If you like this package, consider giving it a ⭐ on GitHub. Your support means a lot!
+

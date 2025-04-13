@@ -1,101 +1,118 @@
 # Persian Slug Generator for Laravel
 
-[![Latest Version](https://img.shields.io/packagist/v/denason/persian-slug.svg?style=flat-square)](https://packagist.org/packages/denason/persian-slug)
-[![Tests](https://img.shields.io/github/workflow/status/denason/persian-slug/run-tests?style=flat-square)](https://github.com/denason/persian-slug/actions)
-[![License](https://img.shields.io/github/license/denason/persian-slug.svg?style=flat-square)](LICENSE.md)
-
-A lightweight and efficient package to generate SEO-friendly **Persian slugs** for Laravel applications.  
-It supports Persian characters, converts Arabic to Persian, optionally converts numbers, and works seamlessly with or without Laravel's built-in slug feature.
+A lightweight and SEO-friendly Persian slug generator for Laravel. Convert Persian, Arabic, and English strings into URL-friendly slugs with ease.
 
 ---
 
-## ✨ Features
+## Features
 
-- ✅ Convert Persian text to SEO-friendly slugs.
-- 🔁 Automatically convert Arabic letters (like ك, ي) to Persian (ک, ی).
-- 🔢 Optionally convert Persian/Arabic numbers to English.
-- 📦 Usable as a helper function (`slug_fa()`) or via the `SlugGenerator` class.
-- ⚙️ Optional support for Laravel's native slug generator.
-- ✅ Fully tested and production-ready.
+- ✅ Converts Persian, Arabic, and English text to SEO-friendly slugs
+- 🔢 Replaces Persian and Arabic numbers with English equivalents
+- 🔀 Optional support for Laravel's `Str::slug()`
+- 🧱 Blade directive `@slugfa('متن')` for generating slugs in views
+- 🧪 Well-tested with PHPUnit
+- 🧬 Includes `HasSlug` trait for automatic slug generation in Eloquent models
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 composer require denason/persian-slug
 ```
 
-> Minimum Laravel version: **9.x**
+If you're using Laravel < 5.5, register the service provider manually in `config/app.php`:
+
+```php
+Denason\PersianSlug\PersianSlugServiceProvider::class,
+```
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### ✅ Using Helper Function
-
-```php
-slug_fa('سلام دنیا'); // salam-donya
-```
-
-### With optional parameters:
+### 1. Using the Helper Function
 
 ```php
-slug_fa('سلام ۱۲۳', separator: '_', convertNumber: true); // salam_123
+slug_fa('سلام دنیا ۱۲۳'); // Output: سلام-دنیا-123
 ```
 
-#### Parameters:
-
-| Name             | Type     | Default | Description                                       |
-|------------------|----------|---------|---------------------------------------------------|
-| `$text`          | string   | —       | The input string to convert                      |
-| `$separator`     | string   | `-`     | Character to separate words in the slug          |
-| `$convertNumber` | bool     | `true`  | Whether to convert Persian/Arabic numbers to English |
-| `$useLaravelSlug`| bool     | `false` | Use Laravel's slug engine (if available)         |
-
----
-
-### ✅ Using the Class
+### 2. Using the Static Method
 
 ```php
 use Denason\PersianSlug\SlugGenerator;
 
-SlugGenerator::make('یادگیری لاراول'); // yadgiri-laravel
+SlugGenerator::make('سلام دنیا ۱۲۳'); // Output: سلام-دنیا-123
 ```
 
----
+Optional Parameters:
 
-## 🔧 Configuration
-
-No configuration required!  
-You can directly use the helper or class anywhere in your Laravel app.
-
----
-
-## ✅ Tests
-
-```bash
-php artisan test
+```php
+SlugGenerator::make(
+    string $text,
+    string $separator = '-',
+    bool $convertNumber = true,
+    bool $useLaravelSlug = false
+): string
 ```
 
-All features of the package are covered with unit tests.
+### 3. Blade Directive
+
+Use the Blade directive inside your views:
+
+```blade
+@slugfa('متن تست برای اسلاگ سئو فارسی')
+<!-- Output: متن-تست-برای-اسلاگ-سئو-فارسی -->
+```
+
+### 4. Using `HasSlug` Trait in Models
+
+Automatically generate slugs when saving Eloquent models:
+
+```php
+use Denason\PersianSlug\Concerns\HasSlug;
+
+class Post extends Model
+{
+    use HasSlug;
+
+    protected $slugSource = 'title';      // Field to slugify
+    protected $slugField  = 'slug';        // Field to store slug
+}
+```
+
+This will auto-generate a unique slug based on the `title` attribute when saving the model.
+
+
+
+## Requirements
+
+- PHP 8.0 or higher
+- Laravel 9, 10, 11, or 12
 
 ---
 
-## 📄 License
+## License
 
-Released under the [MIT License](LICENSE).
-
----
-
-## 👤 Author
-
-Developed by [محمد اسدی](https://github.com/denason)  
-For more tools and updates, visit: [denason.ir](https://denason.ir)
+MIT © [Mohammad Asadi](https://github.com/denason)
 
 ---
 
-## 💡 Tip
+## Contributions
 
-If you like this package, consider giving it a ⭐ on GitHub. Your support means a lot!
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## Credits
+
+Crafted with ❤️ by [Mohammad Asadi](https://github.com/denason), Iran 🇮🇷
+
+---
+
+## Links
+
+- 📦 Packagist: [denason/persian-slug](https://packagist.org/packages/denason/persian-slug)
+- 💻 GitHub: [github.com/denason/persian-slug](https://github.com/denason/persian-slug)
+- 🌐 Website: [denason.ir](https://denason.ir)
 

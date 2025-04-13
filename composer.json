@@ -1,0 +1,43 @@
+{
+    "name": "denason/persian-slug",
+    "version": "1.0.0",
+    "description": "Generate SEO-friendly slugs for Persian text in Laravel applications",
+    "keywords": ["laravel", "slug", "persian", "seo", "denason"],
+
+    "authors": [
+        {
+            "name": "Mohammad Asadi Sisakht",
+            "email": "mohammad.asadi.sisakht@gmail.com",
+            "role": "Developer"
+        }
+    ],
+
+    "support": {
+        "issues": "https://github.com/denason/persian-slug/issues",
+        "source": "https://github.com/denason/persian-slug"
+    },
+
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Denason\\PersianSlug\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Denason\\PersianSlug\\PersianSlugServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0"
+    }
+}

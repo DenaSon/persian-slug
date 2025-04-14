@@ -9,7 +9,6 @@ A lightweight and SEO-friendly Persian slug generator for Laravel. Convert Persi
 - ✅ Converts Persian, Arabic, and English text to SEO-friendly slugs
 - 🔢 Replaces Persian and Arabic numbers with English equivalents
 - 🔀 Optional support for Laravel's `Str::slug()`
-- 🧱 Blade directive `@slugfa('متن')` for generating slugs in views
 - 🧪 Well-tested with PHPUnit
 - 🧬 Includes `HasSlug` trait for automatic slug generation in Eloquent models
 
@@ -25,11 +24,11 @@ A lightweight and SEO-friendly Persian slug generator for Laravel. Convert Persi
 
 - ✅ ساخت اسلاگ‌ تمیز و خوانا از متون فارسی و انگلیسی
 - ✅ تبدیل خودکار اعداد فارسی و عربی به معادل انگلیسی
-- ✅ استفاده از Blade Directive برای تولید سریع اسلاگ در Viewها
 - ✅ استفاده از Helper فانکشن `slug_fa()` برای سادگی بیشتر
 - ✅ افزودن Trait `HasSlug` به مدل‌ها برای ذخیره خودکار و یکتای اسلاگ
+- ✅ قابلیت استفاده از Str::slug() داخلی لاراول
 - ✅ کاملاً سازگار با Laravel 9 به بالا
-- ✅ بدون نیاز به تنظیمات خاص  
+- ✅ بدون نیاز به تنظیمات خاص 
 
 ---
 
@@ -76,16 +75,9 @@ SlugGenerator::make(
 ): string
 ```
 
-### 3. Blade Directive
 
-Use the Blade directive inside your views:
 
-```blade
-@slugfa('متن تست برای اسلاگ سئو فارسی')
-<!-- Output: متن-تست-برای-اسلاگ-سئو-فارسی -->
-```
-
-### 4. Using `HasSlug` Trait in Models
+### 3. Using `HasSlug` Trait in Models
 
 Automatically generate slugs when saving Eloquent models:
 

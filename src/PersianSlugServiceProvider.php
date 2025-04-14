@@ -15,13 +15,6 @@ class PersianSlugServiceProvider extends ServiceProvider
 
         $this->app->bind(SlugGeneratorInterface::class, SlugGenerator::class);
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/persianSlug.php', 'persian-slug'
-        );
-
-
-
-
     }
 
     public function boot()
@@ -29,11 +22,6 @@ class PersianSlugServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/persianSlug.php' => config_path('persian-slug.php'),
         ], 'persian-slug-config');
-
-        Blade::directive('slug', function ($expression) {
-            return "<?php echo \\" . SlugGenerator::class . "::make($expression); ?>";
-        });
-
 
     }
 }

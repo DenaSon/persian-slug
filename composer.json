@@ -1,6 +1,6 @@
 {
     "name": "denason/persian-slug",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Generate SEO-friendly slugs for Persian text in Laravel applications",
     "keywords": ["laravel", "slug", "persian", "seo", "denason"],
 

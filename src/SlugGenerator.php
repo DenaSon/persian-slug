@@ -18,14 +18,14 @@ class SlugGenerator implements SlugGeneratorInterface
         string $separator = '-',
         bool $convertNumber = true,
         bool $useLaravelSlug = false,
-        string $language = 'fa'
+
     ): string {
         if ($convertNumber) {
             $text = self::convertPersianArabicNumbers($text);
         }
 
         if ($useLaravelSlug) {
-            return \Illuminate\Support\Str::slug($text, $separator, $language);
+            return \Illuminate\Support\Str::slug($text, $separator, 'fa');
         }
 
         $text = self::sanitizeText($text);
